@@ -1,0 +1,35 @@
+{
+    "name": "bkstar123/laravel-pingdom-buddy",
+    "description": "Laravel based tool for interacting with Pingdom API",
+    "keywords": [
+        "laravel",
+        "pingdom",
+        "pingdom api",
+        "pingdom api v3"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hoang Anh Tuan",
+            "email": "hoangtuandhbk@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bkstar123\\PingdomBuddy\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bkstar123\\PingdomBuddy\\LaravelPingdomBuddyServiceProvider"
+            ]
+        }
+    }
+}

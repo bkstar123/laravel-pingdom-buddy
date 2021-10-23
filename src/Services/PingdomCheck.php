@@ -3,6 +3,7 @@
  * PingdomCheck
  *
  * @author: tuanha
+ * @date: 23-Oct-2021
  */
 namespace Bkstar123\PingdomBuddy\Services;
 
@@ -17,17 +18,12 @@ class PingdomCheck extends PingdomBase
      */
     public function getChecks()
     {
-        $path = '/checks?include_tags=true';
-        curl_setopt($this->httpCLient, CURLOPT_URL, $this->baseUrl . $path);
-        curl_setopt($this->httpCLient, CURLOPT_CUSTOMREQUEST, 'GET');
-        $result = $this->execute();
-        if ($result['executionStatus']) {
-            if (property_exists(json_decode($result['data']), 'error')) {
-                return false;
-            } else {
-                return json_decode($result['data'])->checks;
-            }
-        } else {
+        $path = 'checks?include_tags=true';
+        try {
+            $res = $this->client->request('GET', $path);
+            $data = json_decode($res->getBody()->getContents(), true);
+            return $data['checks'];
+        } catch (Exception $e) {
             return false;
         }
     }

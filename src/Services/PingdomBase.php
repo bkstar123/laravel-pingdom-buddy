@@ -23,9 +23,10 @@ class PingdomBase
     {
         $this->client = new Client([
             'base_uri' => config('bkstar123_laravel_pingdombuddy.pingdom.base_url'),
-            'headers' => [
-                "Authorization" => "Bearer " . config('bkstar123_laravel_pingdombuddy.pingdom.api_token'),
-                "Cache-Control" => "no-cache"
+            'headers'  => [
+                "Authorization"   => "Bearer " . config('bkstar123_laravel_pingdombuddy.pingdom.api_token'),
+                "Cache-Control"   => "no-cache",
+                "Accept-Encoding" => "gzip"
             ]
         ]);
     }

@@ -20,9 +20,10 @@ class PingdomCheck extends PingdomBase
      *
      * @return false||array
      */
-    public function getChecks($offset = 0, $limit = 25000)
+    public function getChecks($offset = 0, $limit = 25000, $tags = "")
     {
-        $path = "checks?include_tags=true&offset=$offset&limit=$limit";
+        $tagList = !empty($tags) ? "&tags=$tags" : "";
+        $path = "checks?include_tags=true&offset=$offset&limit=$limit" . $tagList;
         try {
             $res = $this->client->request('GET', $path);
             $data = json_decode($res->getBody()->getContents(), true);

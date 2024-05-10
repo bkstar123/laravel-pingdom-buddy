@@ -9,6 +9,7 @@
 namespace Bkstar123\PingdomBuddy;
 
 use Illuminate\Support\ServiceProvider;
+use Bkstar123\PingdomBuddy\Services\PingdomTest;
 use Bkstar123\PingdomBuddy\Services\PingdomCheck;
 
 class LaravelPingdomBuddyServiceProvider extends ServiceProvider
@@ -32,6 +33,9 @@ class LaravelPingdomBuddyServiceProvider extends ServiceProvider
     {
         $this->app->singleton('pingdomCheck', function ($app) {
             return new PingdomCheck;
+        });
+        $this->app->singleton('pingdomTest', function ($app) {
+            return new PingdomTest;
         });
         $this->mergeConfigFrom(__DIR__.'/config/bkstar123_laravel_pingdombuddy.php', 'bkstar123_laravel_pingdombuddy');
     }
